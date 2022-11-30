@@ -17,6 +17,7 @@ public class CustomButton extends FrameLayout {
 
     TextView textView;
 
+
     public CustomButton(@NonNull Context context) {
         super(context);
     }
@@ -34,6 +35,7 @@ public class CustomButton extends FrameLayout {
         setClickable(true);
         setBackgroundResource(R.drawable.button_selec);
     }
+
 
     public void set(int a){
         if(a==0) {

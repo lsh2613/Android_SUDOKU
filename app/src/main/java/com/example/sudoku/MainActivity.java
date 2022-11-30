@@ -2,13 +2,73 @@ package com.example.sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     BoardGenerator board = new BoardGenerator();
+    CustomButton clickedCustomButton=null;
+
+    public void onClickNum1(View view) {
+        clickedCustomButton.set(1);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum2(View view) {
+        clickedCustomButton.set(2);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum3(View view) {
+        clickedCustomButton.set(3);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum4(View view) {
+        clickedCustomButton.set(4);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum5(View view) {
+        clickedCustomButton.set(5);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum6(View view) {
+        clickedCustomButton.set(6);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum7(View view) {
+        clickedCustomButton.set(7);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum8(View view) {
+        clickedCustomButton.set(8);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickNum9(View view) {
+        clickedCustomButton.set(9);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+    public void onClickDelete(View view) {
+        clickedCustomButton.set(0);
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
+
+    public void onClickCancel(View view) {
+        TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+        numberPad.setVisibility(View.INVISIBLE);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,15 +77,15 @@ public class MainActivity extends AppCompatActivity {
 
         TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
         CustomButton[][] buttons = new CustomButton[9][9];
-
         TableLayout numberPad = (TableLayout) findViewById(R.id.numberPad);
+
         numberPad.setVisibility(View.INVISIBLE);
 
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
 
             for (int j = 0; j < 9; j++) {
-                buttons[i][j] = new CustomButton(this,i,j);
+                buttons[i][j] = new CustomButton(this, i, j);
 
                 /**
                  * 버튼 클릭 시 넘버패드 visible ㄱㄱ
@@ -33,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 buttons[i][j].setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        clickedCustomButton = (CustomButton) view;
                         numberPad.setVisibility(View.VISIBLE);
                     }
                 });
