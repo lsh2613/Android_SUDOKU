@@ -4,7 +4,9 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.widget.FrameLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,9 @@ public class CustomButton extends FrameLayout {
 
     TextView textView;
 
+//    LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//    TableLayout memo = (TableLayout) layoutInflater.inflate(R.layout.layout_memo, null);
+//    addView(memo);
 
     public CustomButton(@NonNull Context context) {
         super(context);
@@ -45,6 +50,10 @@ public class CustomButton extends FrameLayout {
             this.value=a;
             textView.setText(String.valueOf(a));
         }
+    }
+
+    public int getValue() {
+        return this.value;
     }
 
 

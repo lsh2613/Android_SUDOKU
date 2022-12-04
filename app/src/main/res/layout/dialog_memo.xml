@@ -2,45 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context=".MainActivity">
+    android:background="#FFFFFF">
 
     <TableLayout
-        android:id="@+id/forMemo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473"></TableLayout>
-
-    <TableLayout
-        android:id="@+id/numberpad"
-        android:layout_width="330dp"
-        android:layout_height="261dp"
+        android:id="@+id/memo"
+        android:layout_width="403dp"
+        android:layout_height="258dp"
         android:background="#FFFFFF"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingBottom="20dp"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
-        app:layout_constraintStart_toStartOf="@+id/tableLayout"
-        app:layout_constraintTop_toTopOf="@+id/tableLayout">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -56,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="Input Number"
+                android:text="MEMO"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
@@ -159,11 +137,11 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button10"
+                android:id="@+id/button12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button"
-                android:visibility="invisible" />
+                android:onClick="onClickDelete"
+                android:text="DELETE" />
 
             <Button
                 android:id="@+id/button11"
@@ -173,11 +151,11 @@
                 android:text="Cancel" />
 
             <Button
-                android:id="@+id/button12"
+                android:id="@+id/button13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="onClickDelete"
-                android:text="DEL" />
+                android:text="OK" />
+
         </TableRow>
 
     </TableLayout>

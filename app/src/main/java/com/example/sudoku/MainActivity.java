@@ -1,16 +1,19 @@
 package com.example.sudoku;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
-import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     BoardGenerator board = new BoardGenerator();
@@ -24,54 +27,72 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum2(View view) {
         clickedCustomButton.set(2);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum3(View view) {
         clickedCustomButton.set(3);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum4(View view) {
         clickedCustomButton.set(4);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum5(View view) {
         clickedCustomButton.set(5);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum6(View view) {
         clickedCustomButton.set(6);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum7(View view) {
         clickedCustomButton.set(7);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum8(View view) {
         clickedCustomButton.set(8);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickNum9(View view) {
         clickedCustomButton.set(9);
         numberPad.setVisibility(View.INVISIBLE);
         unsetConflict();
         setConflict();
+        isComplete();
+
     }
     public void onClickDelete(View view) {
         clickedCustomButton.set(0);
@@ -83,16 +104,29 @@ public class MainActivity extends AppCompatActivity {
         numberPad.setVisibility(View.INVISIBLE);
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
         buttons = new CustomButton[9][9];
-        numberPad = (TableLayout) findViewById(R.id.numberPad);
 
+        TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
+        numberPad = (TableLayout) findViewById(R.id.numberpad);
         numberPad.setVisibility(View.INVISIBLE);
+
+        /**
+         * 화면에 띄우기 위한 dialog_memo 인플레이터
+         */
+//        ConstraintLayout container = (ConstraintLayout)findViewById(R.id.constraintLayout);
+//        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        inflater.inflate(R.layout.dialog_memo, container,true);
+//
+//        TableLayout dialogMemo = (TableLayout)container.findViewById(R.id.memo);
+//        dialogMemo.setVisibility(View.INVISIBLE);
+
 
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
@@ -112,9 +146,21 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+                /**
+                 * 버튼 길게 클릭 시 메모 visible
+                 */
+
+                buttons[i][j].setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+//                        dialogMemo.setVisibility(View.VISIBLE);
+                        return true;
+                    }
+                });
+
                 int number = board.get(i, j);
 
-                if (Math.random() <= 0.65) {
+                if (Math.random() <= 0.99) {
                     buttons[i][j].set(number);
                 }
 
@@ -168,6 +214,8 @@ public class MainActivity extends AppCompatActivity {
             if (clickedValue == customButton.value) {
                 flag++;
                 customButton.setBackgroundColor(Color.rgb(255, 0, 0));
+                customButton.setAlpha(0.99f);
+
             }
         }
 
@@ -180,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
             if (clickedValue == customButton.value) {
                 flag++;
                 customButton.setBackgroundColor(Color.rgb(255, 0, 0));
+                customButton.setAlpha(0.99f);
+
             }
         }
 
@@ -196,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 if (clickedValue == customButton.value) {
                     flag++;
                     customButton.setBackgroundColor(Color.rgb(255, 0, 0));
+                    customButton.setAlpha(0.99f);
                 }
             }
         }
@@ -229,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
             if (valueBefore==customButton.value){
                 customButton.setBackgroundColor(Color.rgb(255,255,255));
                 clickedCustomButton.setBackgroundColor(Color.rgb(255, 255, 255));
+                customButton.setAlpha(1f);
             }
         }
 
@@ -241,6 +293,7 @@ public class MainActivity extends AppCompatActivity {
             if (valueBefore==customButton.value){
                 customButton.setBackgroundColor(Color.rgb(255,255,255));
                 clickedCustomButton.setBackgroundColor(Color.rgb(255, 255, 255));
+                customButton.setAlpha(1f);
             }
         }
 
@@ -257,13 +310,71 @@ public class MainActivity extends AppCompatActivity {
                 if (valueBefore==customButton.value){
                     customButton.setBackgroundColor(Color.rgb(255, 255, 255));
                     clickedCustomButton.setBackgroundColor(Color.rgb(255, 255, 255));
+                    customButton.setAlpha(1f);
                 }
 
             }
 
         }
     }
+    public void isComplete() {
+        TableLayout tl = (TableLayout) findViewById(R.id.tableLayout);
 
+        int cntOfWhite=0;
+        int cntOf1 = 0;
+        int cntOf2 = 0;
+        int cntOf3 = 0;
+        int cntOf4 = 0;
+        int cntOf5 = 0;
+        int cntOf6 = 0;
+        int cntOf7 = 0;
+        int cntOf8 = 0;
+        int cntOf9 = 0;
+
+        for (int i = 0; i < 9; i++) {
+            TableRow tableRow = (TableRow) tl.getChildAt(i);
+            for (int j = 0; j < 9; j++) {
+                CustomButton customButton = (CustomButton) tableRow.getVirtualChildAt(j);
+                int value = customButton.getValue();
+                if (customButton.getAlpha()==1f)
+                    cntOfWhite++;
+                switch (value) {
+                    case 1:
+                        cntOf1++;
+                        break;
+                    case 2:
+                        cntOf2++;
+                        break;
+                    case 3:
+                        cntOf3++;
+                        break;
+                    case 4:
+                        cntOf4++;
+                        break;
+                    case 5:
+                        cntOf5++;
+                        break;
+                    case 6:
+                        cntOf6++;
+                        break;
+                    case 7:
+                        cntOf7++;
+                        break;
+                    case 8:
+                        cntOf8++;
+                        break;
+                    case 9:
+                        cntOf9++;
+                        break;
+                }
+            }
+        }
+        //todo 성공 창 xml로 띄우고 더이상 버튼 못 만지게 하는 기능 추가
+        if (cntOfWhite == 80 && cntOf1 == 9 && cntOf2 == 9 && cntOf3 == 9 && cntOf4 == 9
+                && cntOf5 == 9 && cntOf6 == 9 && cntOf7 == 9 && cntOf8 == 9 && cntOf9 == 9) {
+            Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }
 
