@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -479,7 +480,13 @@ public class MainActivity extends AppCompatActivity {
         //todo 성공 창 xml로 띄우고 더이상 버튼 못 만지게 하는 기능 추가
         if (cntOfWhite == 80 && cntOf1 == 9 && cntOf2 == 9 && cntOf3 == 9 && cntOf4 == 9
                 && cntOf5 == 9 && cntOf6 == 9 && cntOf7 == 9 && cntOf8 == 9 && cntOf9 == 9) {
-            Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show();
+            TextView com = (TextView) findViewById(R.id.COMPLETE);
+            com.setVisibility(View.VISIBLE);
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    buttons[i][j].setEnabled(false);
+                }
+            }
         }
     }
 

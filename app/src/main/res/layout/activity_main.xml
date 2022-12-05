@@ -16,17 +16,24 @@
         tools:layout_editor_absoluteY="10dp"
         android:measureAllChildren="false">
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             ></TableLayout>
+
+        <TextView
+            android:id="@+id/COMPLETE"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:text="COMPLETE"
+            android:textAlignment="center"
+            android:textColor="#E91E63"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:visibility="invisible"/>
 
         <TableLayout
             android:id="@+id/numberpad"
