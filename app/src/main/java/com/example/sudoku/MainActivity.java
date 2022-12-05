@@ -11,8 +11,10 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TableLayout numberPad;
     CustomButton[][] buttons;
     int valueBefore;
-
+    TableLayout dialogMemo;
     public void onClickNum1(View view) {
         clickedCustomButton.set(1);
         numberPad.setVisibility(View.INVISIBLE);
@@ -101,10 +103,106 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickCancel(View view) {
-        numberPad.setVisibility(View.INVISIBLE);
+        dialogMemo.setVisibility(View.INVISIBLE);
     }
 
 
+    public void memoOnClick1(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[0][0].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[0][0].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[0][0].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick2(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[0][1].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[0][1].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[0][1].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick3(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[0][2].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[0][2].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[0][2].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick4(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[1][0].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[1][0].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[1][0].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick5(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[1][1].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[1][1].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[1][1].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick6(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[1][2].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[1][2].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[1][2].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick7(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[2][0].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[2][0].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[2][0].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick8(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[2][1].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[2][1].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[2][1].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick9(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[2][2].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[2][2].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[2][2].setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void memoOnClickDelete(View view) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                clickedCustomButton.memoTextView[i][j].setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    public void memoOnClickCancel(View view) {
+        dialogMemo.setVisibility(View.INVISIBLE);
+    }
+    public void memoOnClickOK(View view) {
+        dialogMemo.setVisibility(View.INVISIBLE);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,17 +214,20 @@ public class MainActivity extends AppCompatActivity {
         TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
         numberPad = (TableLayout) findViewById(R.id.numberpad);
         numberPad.setVisibility(View.INVISIBLE);
+//        table.setVisibility(View.VISIBLE);
 
         /**
          * 화면에 띄우기 위한 dialog_memo 인플레이터
          */
-//        ConstraintLayout container = (ConstraintLayout)findViewById(R.id.constraintLayout);
+//        FrameLayout container = (FrameLayout)findViewById(R.id.frame);
 //        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        inflater.inflate(R.layout.dialog_memo, container,true);
 //
 //        TableLayout dialogMemo = (TableLayout)container.findViewById(R.id.memo);
 //        dialogMemo.setVisibility(View.INVISIBLE);
 
+        dialogMemo = (TableLayout)findViewById(R.id.memo);
+        dialogMemo.setVisibility(View.INVISIBLE);
 
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
@@ -142,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         clickedCustomButton = (CustomButton) view;
                         numberPad.setVisibility(View.VISIBLE);
+                        dialogMemo.setVisibility(View.INVISIBLE);
                         valueBefore = clickedCustomButton.value;
                     }
                 });
@@ -153,7 +255,9 @@ public class MainActivity extends AppCompatActivity {
                 buttons[i][j].setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
-//                        dialogMemo.setVisibility(View.VISIBLE);
+                        clickedCustomButton = (CustomButton) view;
+                        dialogMemo.setVisibility(View.VISIBLE);
+                        numberPad.setVisibility(View.INVISIBLE);
                         return true;
                     }
                 });
@@ -180,6 +284,10 @@ public class MainActivity extends AppCompatActivity {
                 if (j == 3 || j == 6) {
                     left = 20;
                 }
+
+//                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                inflater.inflate(R.layout.layout_memo, buttons[i][j],true);
+
 
                 layoutParams.setMargins(left, top, right, bottom);
                 buttons[i][j].setLayoutParams(layoutParams);
@@ -372,7 +480,13 @@ public class MainActivity extends AppCompatActivity {
         //todo 성공 창 xml로 띄우고 더이상 버튼 못 만지게 하는 기능 추가
         if (cntOfWhite == 80 && cntOf1 == 9 && cntOf2 == 9 && cntOf3 == 9 && cntOf4 == 9
                 && cntOf5 == 9 && cntOf6 == 9 && cntOf7 == 9 && cntOf8 == 9 && cntOf9 == 9) {
-            Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show();
+            TextView com = (TextView) findViewById(R.id.COMPLETE);
+            com.setVisibility(View.VISIBLE);
+            for (int i = 0; i < 9; i++) {
+                for (int j = 0; j < 9; j++) {
+                    buttons[i][j].setEnabled(false);
+                }
+            }
         }
     }
 
