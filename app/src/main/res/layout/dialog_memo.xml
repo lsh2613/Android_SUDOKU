@@ -7,9 +7,10 @@
     android:background="#FFFFFF">
 
     <TableLayout
-        android:id="@+id/memo"
-        android:layout_width="403dp"
-        android:layout_height="258dp"
+        android:id="@+id/dialogMemo"
+        android:layout_width="330dp"
+        android:layout_height="261dp"
+        android:layout_gravity="center"
         android:background="#FFFFFF"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"

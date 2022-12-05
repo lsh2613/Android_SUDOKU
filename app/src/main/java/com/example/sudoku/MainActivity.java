@@ -11,6 +11,7 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -116,17 +117,20 @@ public class MainActivity extends AppCompatActivity {
         TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
         numberPad = (TableLayout) findViewById(R.id.numberpad);
         numberPad.setVisibility(View.INVISIBLE);
+//        table.setVisibility(View.VISIBLE);
 
         /**
          * 화면에 띄우기 위한 dialog_memo 인플레이터
          */
-//        ConstraintLayout container = (ConstraintLayout)findViewById(R.id.constraintLayout);
+//        FrameLayout container = (FrameLayout)findViewById(R.id.frame);
 //        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        inflater.inflate(R.layout.dialog_memo, container,true);
 //
 //        TableLayout dialogMemo = (TableLayout)container.findViewById(R.id.memo);
 //        dialogMemo.setVisibility(View.INVISIBLE);
 
+        TableLayout dialogMemo = (TableLayout)findViewById(R.id.memo);
+        dialogMemo.setVisibility(View.INVISIBLE);
 
         for (int i = 0; i < 9; i++) {
             TableRow tableRow = new TableRow(this);
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         clickedCustomButton = (CustomButton) view;
                         numberPad.setVisibility(View.VISIBLE);
+                        dialogMemo.setVisibility(View.INVISIBLE);
                         valueBefore = clickedCustomButton.value;
                     }
                 });
@@ -153,7 +158,8 @@ public class MainActivity extends AppCompatActivity {
                 buttons[i][j].setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
-//                        dialogMemo.setVisibility(View.VISIBLE);
+                        dialogMemo.setVisibility(View.VISIBLE);
+                        numberPad.setVisibility(View.INVISIBLE);
                         return true;
                     }
                 });
@@ -180,6 +186,10 @@ public class MainActivity extends AppCompatActivity {
                 if (j == 3 || j == 6) {
                     left = 20;
                 }
+
+//                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//                inflater.inflate(R.layout.layout_memo, buttons[i][j],true);
+
 
                 layoutParams.setMargins(left, top, right, bottom);
                 buttons[i][j].setLayoutParams(layoutParams);

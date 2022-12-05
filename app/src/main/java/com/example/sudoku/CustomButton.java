@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,8 @@ public class CustomButton extends FrameLayout {
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(Typeface.DEFAULT_BOLD);
         addView(textView);
+
+
         setClickable(true);
         setBackgroundResource(R.drawable.button_selec);
     }
@@ -55,6 +58,5 @@ public class CustomButton extends FrameLayout {
     public int getValue() {
         return this.value;
     }
-
 
 }
