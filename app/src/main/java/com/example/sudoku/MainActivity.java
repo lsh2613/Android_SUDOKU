@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     TableLayout numberPad;
     CustomButton[][] buttons;
     int valueBefore;
-
+    TableLayout dialogMemo;
     public void onClickNum1(View view) {
         clickedCustomButton.set(1);
         numberPad.setVisibility(View.INVISIBLE);
@@ -102,10 +102,106 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickCancel(View view) {
-        numberPad.setVisibility(View.INVISIBLE);
+        dialogMemo.setVisibility(View.INVISIBLE);
     }
 
 
+    public void memoOnClick1(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[0][0].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[0][0].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[0][0].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick2(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[0][1].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[0][1].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[0][1].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick3(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[0][2].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[0][2].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[0][2].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick4(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[1][0].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[1][0].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[1][0].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick5(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[1][1].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[1][1].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[1][1].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick6(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[1][2].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[1][2].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[1][2].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick7(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[2][0].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[2][0].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[2][0].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick8(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[2][1].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[2][1].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[2][1].setVisibility(View.VISIBLE);
+        }
+    }
+    public void memoOnClick9(View view) {
+        // VISIBLE=0 INVISIBLE=4
+        int visibility = clickedCustomButton.memoTextView[2][2].getVisibility();
+        if (visibility == 0) {
+            clickedCustomButton.memoTextView[2][2].setVisibility(View.INVISIBLE);
+        } else {
+            clickedCustomButton.memoTextView[2][2].setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void memoOnClickDelete(View view) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                clickedCustomButton.memoTextView[i][j].setVisibility(View.INVISIBLE);
+            }
+        }
+    }
+
+    public void memoOnClickCancel(View view) {
+        dialogMemo.setVisibility(View.INVISIBLE);
+    }
+    public void memoOnClickOK(View view) {
+        dialogMemo.setVisibility(View.INVISIBLE);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
 //        TableLayout dialogMemo = (TableLayout)container.findViewById(R.id.memo);
 //        dialogMemo.setVisibility(View.INVISIBLE);
 
-        TableLayout dialogMemo = (TableLayout)findViewById(R.id.memo);
+        dialogMemo = (TableLayout)findViewById(R.id.memo);
         dialogMemo.setVisibility(View.INVISIBLE);
 
         for (int i = 0; i < 9; i++) {
@@ -158,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
                 buttons[i][j].setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
+                        clickedCustomButton = (CustomButton) view;
                         dialogMemo.setVisibility(View.VISIBLE);
                         numberPad.setVisibility(View.INVISIBLE);
                         return true;
