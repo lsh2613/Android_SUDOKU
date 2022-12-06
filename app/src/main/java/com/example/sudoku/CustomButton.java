@@ -34,7 +34,7 @@ public class CustomButton extends FrameLayout {
         this.row=row;
         this.col=col;
         this.textView= new TextView(context);
-        textView.setTextSize(44);
+        textView.setTextSize(50);
         textView.setTextColor(Color.rgb(0,0,255));
         textView.setGravity(Gravity.CENTER);
         textView.setTypeface(Typeface.DEFAULT_BOLD);

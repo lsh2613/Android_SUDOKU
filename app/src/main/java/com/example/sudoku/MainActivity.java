@@ -16,6 +16,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 public class MainActivity extends AppCompatActivity {
     BoardGenerator board = new BoardGenerator();
@@ -256,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onLongClick(View view) {
                         clickedCustomButton = (CustomButton) view;
+                        setDialogMemo();
                         dialogMemo.setVisibility(View.VISIBLE);
                         numberPad.setVisibility(View.INVISIBLE);
                         return true;
@@ -264,7 +266,7 @@ public class MainActivity extends AppCompatActivity {
 
                 int number = board.get(i, j);
 
-                if (Math.random() <= 0.99) {
+                if (Math.random() <= 0.90) {
                     buttons[i][j].set(number);
                 }
 
@@ -273,17 +275,15 @@ public class MainActivity extends AppCompatActivity {
                         TableRow.LayoutParams.WRAP_CONTENT,
                         1.0f);
 
-                int left = 5;
-                int top = 5;
-                int right = 5;
-                int bottom = 5;
+                int left = 4;
+                int top = 4;
+                int right = 4;
+                int bottom = 4;
 
-                if (i == 3 || i == 6) {
-                    top = 35;
-                }
-                if (j == 3 || j == 6) {
+                if (i == 3 || i == 6)
+                    top = 33;
+                if (j == 3 || j == 6)
                     left = 20;
-                }
 
 //                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //                inflater.inflate(R.layout.layout_memo, buttons[i][j],true);
@@ -295,6 +295,21 @@ public class MainActivity extends AppCompatActivity {
             }
             table.addView(tableRow);
 
+        }
+    }
+
+    private void setDialogMemo() {
+        for (int i = 0; i < 3; i++) {
+            TableRow dialogMemoTableRow = (TableRow) dialogMemo.getChildAt(i+1);
+            for (int j = 0; j < 3; j++) {
+                ToggleButton toggleButton = (ToggleButton) dialogMemoTableRow.getChildAt(j);
+
+                if (clickedCustomButton.memoTextView[i][j].getVisibility() == View.VISIBLE) {
+                    toggleButton.setChecked(true);
+                } else {
+                    toggleButton.setChecked(false);
+                }
+            }
         }
     }
 
@@ -369,8 +384,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-
 
     // No conflict
     public void unsetConflict() {
