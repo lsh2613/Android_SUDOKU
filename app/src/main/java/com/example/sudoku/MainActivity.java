@@ -196,6 +196,7 @@ public class MainActivity extends AppCompatActivity {
                 clickedCustomButton.memoTextView[i][j].setVisibility(View.INVISIBLE);
             }
         }
+        setDialogMemo();
     }
 
     public void memoOnClickCancel(View view) {
