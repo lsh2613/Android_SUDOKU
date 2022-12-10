@@ -269,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (Math.random() <= 0.90) {
                     buttons[i][j].set(number);
+                    buttons[i][j].setEnabled(false);
                 }
 
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
