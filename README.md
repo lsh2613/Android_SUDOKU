@@ -1,8 +1,3 @@
-Android 기반의 스도쿠 어플 구현
-<br />
-<br />
-<br />
-
 <h2>Description 📑</h2>
 <h3>Home</h3>
 <img width="195" alt="image" src="https://github.com/lsh2613/Android_SUDOKU/assets/104637774/7747f268-92ca-441f-9e95-a24f70dff398">
