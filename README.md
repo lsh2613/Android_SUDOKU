@@ -19,8 +19,6 @@ Android 기반의 스도쿠 어플 구현
 <h2>Function</h2>
 <li>짧게 클릭 시 Number Pad를 통한 숫자 입력</li>
 <li>길게 클릭 시 Memo pad 활용</li>
-<li>DB를 활용한 댓글 작성</li>
-<li>JSP를 활용한 동적 페이지 제공</li>
 
 <h3>Skills ⚙️</h3>
 <li>Java</li>
